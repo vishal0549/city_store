@@ -1,0 +1,20 @@
+.container.show_page
+  .ui.internally.grid.main
+    .row
+      .five.wide.column
+        - if @deal.avatar.attached?
+          = image_tag(url_for(@deal.avatar), class: "image")
+      .ten.wide.column
+        .ui.segment
+          %h2.ui.right.floated.header= @deal.name
+          .ui.clearing.divider
+          %dl
+            %dt Description:
+            %dd= @deal.description
+            %dt Tag Visible:
+            %dd= @deal.tag_visible
+            - if @deal.deleted
+              %dt Deleted:
+              %dd= @deal.deleted
+              %dt Deleted At:
+              %dd= @deal.deleted_at.strftime('%d %b %Y')

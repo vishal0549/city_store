@@ -1,0 +1,18 @@
+.container.edit_page
+  %h2.header
+    Edit Category
+  = form_for @category, url: admin_category_path(@category), html: { class: 'ui form'} do |f|
+    .field.six.wide
+      %label Name
+      = f.text_field :name
+    .field.inline.four.wide
+      %label Parent Category
+      = f.select :parent_id, categories_options, include_blank: "Select Parent Category"
+    - if @category.avatar.attached?
+      .field.four.wide
+        %label Image:
+        = image_tag(url_for(@category.avatar), class: "image")
+    .field.four.wide.inline
+      %label Update Image:
+      = f.file_field :avatar
+    = f.submit 'Submit', class: "ui button"

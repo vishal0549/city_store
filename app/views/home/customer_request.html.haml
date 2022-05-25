@@ -1,0 +1,14 @@
+.container
+  %h3.header
+    Submit your Query/Feedback
+  = form_tag(submit_request_path, class: 'ui form') do
+    .field.six.wide
+      %label Email
+      = email_field_tag :email, '', required: true
+    .field.six.wide
+      %label Subject
+      = text_field_tag :subject, '', required: true
+    .field.inline.six.wide
+      %label Message:
+      = text_area_tag :message, '', required: true
+    = submit_tag 'Submit', class: "ui button"

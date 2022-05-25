@@ -1,0 +1,22 @@
+.product_show
+  .ui.container
+    .ui.relaxed.divided.items
+      .item
+        .ui.large.image
+          = image_file(@product)
+        .content
+          .header
+            = @product.name
+            - if @product.quantity
+              = ' - ' + @product.quantity.to_s + @product.product_unit.try(:nice_name).to_s
+          .meta
+            MRP:
+            %span.retail_price
+              = indian_rupee(@product.retail_price)
+            %br
+            %br
+            Sale Price:
+            %span.sale_price
+              = indian_rupee(@product.sale_price)
+          .description
+            = @product.description

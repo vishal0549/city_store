@@ -1,0 +1,15 @@
+.container
+  %h2.header
+    Add Deal
+  = form_for @deal, url: admin_deals_path, html: { class: 'ui form'} do |f|
+    .field.six.wide
+      %label Name
+      = f.text_field :name
+    .field.inline.six.wide
+      %label Description:
+      = f.text_area :description
+    .field
+      .ui.checkbox
+        = f.check_box :tag_visible
+        %label Visible to Customer as a tag on product:
+    = f.submit 'Submit', class: "ui button"

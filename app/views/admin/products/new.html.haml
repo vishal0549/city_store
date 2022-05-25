@@ -1,0 +1,34 @@
+.container
+  %h2.header
+    Add Product
+  = form_for @product, url: admin_products_path, html: { class: 'ui form'} do |f|
+    .field.six.wide
+      %label Name:
+      = f.text_field :name, required: true
+    .field.inline.six.wide
+      %label Description:
+      = f.text_area :description, required: true
+    .field.inline.three.wide
+      %label Retail Price:
+      = f.number_field :retail_price, required: true
+    .field.inline
+      %label Sale Price:
+      = f.number_field :sale_price, required: true
+    .field.inline.four.wide
+      %label Category:
+      = f.select :category_id, categories_options, { include_blank: "Select Category" }, { class: 'ui dropdown' }
+    .field.inline.four.wide
+      %label Quantity:
+      = f.number_field :quantity, required: true
+      = f.select :product_unit_id, product_unit_options, { include_blank: "Select Product Unit" }, { required: true, class: 'ui dropdown' }
+    .field
+      .ui.checkbox
+        = f.check_box :stock_available
+        %label Stock Available:
+    .field.four.wide.inline
+      %label Image:
+      = f.file_field :avatar
+    .field.inline.four.wide
+      %label Add to Deal:
+      = f.select :deal_id, deal_options, { include_blank: "Select Deal" }, { class: 'ui dropdown' }
+    = f.submit 'Submit', class: "ui button"

@@ -1,0 +1,53 @@
+.ui.secondary.menu.inverted.olive
+  .item{"data-value" => "male"}
+    = link_to image_tag('city_grocery.png', class: "image", style: "width: 80px;height: 70px;"), root_path, data: { turbolinks: false }
+  .left.menu.full-width
+    .item.full-width
+      .ui.category.search.full-width
+        .ui.icon.input.full-width
+          %input.prompt{:placeholder => "Search Product...", :type => "text", value: params[:term], class: 'product-search', data_url: prducts_search_path}/
+          %i.search.icon
+
+.ui.menu.inverted.brown
+  .ui.pointing.dropdown.link.item
+    %span.text Shopping By Category
+    %i.dropdown.icon
+    .menu
+      - Category.main.each_with_index do |cat, index|
+        .item
+          - if cat.subcategories.present?
+            %i.dropdown.icon
+          = link_to cat.name, category_path(cat), data: { turbolinks: false }
+          - if cat.subcategories.present?
+            .menu
+              - cat.subcategories.each do |sub_cat|
+                .item
+                  - if sub_cat.subcategories.present?
+                    %i.dropdown.icon
+                  = link_to sub_cat.name, category_path(sub_cat), data: { turbolinks: false }
+                  - if sub_cat.subcategories.present?
+                    .menu
+                      - sub_cat.subcategories.each do |s_cat|
+                        .item
+                          = link_to s_cat.name, category_path(s_cat), data: { turbolinks: false }
+        - if (Category.main.count - index) > 1
+          .divider
+  .right.menu
+    .ui.right.aligned.category.item
+      %i.phone.icon.volume
+      Order on Phone
+      %br
+      8102640098 / 9431416178
+    .ui.right.aligned.category.item
+      %i.whatsapp.icon
+      Order on Whatsapp
+      %br
+      9504406444
+    .ui.right.aligned.category.item
+      %i.comment.alternate.outline.icon
+      Order By SMS
+      %br
+      8102640098 / 9431416178
+    .ui.right.aligned.category.item     
+      %i.shipping.fast.icon
+      Cash on Delivery

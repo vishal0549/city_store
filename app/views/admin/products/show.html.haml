@@ -1,0 +1,26 @@
+.container.show_page
+  .ui.internally.grid.main
+    .row
+      .five.wide.column
+        - if @product.avatar.attached?
+          = image_tag(url_for(@product.avatar), class: "image")
+      .ten.wide.column
+        .ui.segment
+          %h2.ui.right.floated.header= @product.name
+          .ui.clearing.divider
+          %dl
+            %dt Description:
+            %dd= @product.description
+            %dt Retail Price:
+            %dd= @product.retail_price
+            %dt Sale Price:
+            %dd= @product.sale_price
+            %dt Category:
+            %dd= @product.category.try(:name)
+            %dt Quantity:
+            %dd= @product.quantity.to_s + @product.product_unit.try(:nice_name).to_s
+            %dt Stock Available:
+            %dd= product_available(@product)
+            - if @product.deal
+              %dt Deal:
+              %dd= @product.deal.try(:name)

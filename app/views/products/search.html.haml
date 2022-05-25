@@ -1,0 +1,18 @@
+.product_search_div
+  .ui.sizer.vertical.segment
+    .ui.medium.header Search Results
+  .ui.cards
+    - @products.each do |product|  
+      .card
+        .image.mini
+          = link_to image_file(product), product_path(product), data: { turbolinks: false }
+        .content
+          .header
+            = product.name
+          .meta
+            = product.quantity.to_s + product.product_unit.try(:nice_name).to_s
+        .extra.content
+          %span.retail_price
+            = indian_rupee(product.retail_price)
+          %span.sale_price
+            = indian_rupee(product.sale_price)

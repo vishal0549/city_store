@@ -1,0 +1,17 @@
+.card
+  .image
+    = link_to image_tag(url_for(product.avatar)), product_path(product), data: { turbolinks: false }
+  .content
+    .header
+      = product.name
+    .meta
+      = product.quantity.to_s + product.product_unit.try(:nice_name).to_s
+  .extra.content
+    %span.retail_price
+      = indian_rupee(product.retail_price)
+    %span.sale_price
+      = indian_rupee(product.sale_price)
+    - if product.discount_percent.to_i.nonzero?
+      %br
+      %span.discount_off_message.floated
+        = product.discount_percent.to_s + '% ' + 'OFF'

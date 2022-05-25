@@ -1,0 +1,23 @@
+.container.index_page
+  %h2.header
+    Customer Request
+  .ui.segment
+    %table.ui.striped.table
+      %thead
+        %tr
+          %th Email
+          %th Subject
+          %th Message
+          %th Actions
+      %tbody
+        - @customer_requests.each do |cr|
+          %tr
+            %td= cr.email
+            %td= cr.subject
+            %td= cr.message
+            %td
+              = link_to admin_customer_request_path(cr), method: :delete, data: { confirm: 'Are you sure you want to delete this one?', tooltip: 'Delete Customer Request'} do
+                %span
+                  %i.trash.icon
+
+    = paginate @customer_requests

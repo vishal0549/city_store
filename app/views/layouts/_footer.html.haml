@@ -1,0 +1,19 @@
+.ui.clearing.divider
+.ui.vertical.footer.segment
+  .ui.center.aligned.container
+    .ui.stackable.inverted.grid
+      .three.wide.column
+        = image_tag('COD.png', class: "image ui small")
+      .three.wide.column
+        = image_tag('paytm-logo.png', class: "image ui small")
+      .three.wide.column
+        = image_tag('google_pay.png', class: "image ui small")
+      .three.wide.column
+        = image_tag('swipe.png', class: "image ui small")
+    .ui.horizontal.small.divided.link.list
+      = link_to 'About Us', about_path, class: 'item', data: { turbolinks: false }
+      = link_to 'Contact Us', contact_path, class: 'item', data: { turbolinks: false }
+      = link_to 'Terms & Conditions', terms_and_conditions_path, class: 'item', data: { turbolinks: false }
+      = link_to 'Privacy Policy', privacy_path, class: 'item', data: { turbolinks: false }
+    %br
+      &copy; 2019 by City Grocery

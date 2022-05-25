@@ -1,0 +1,41 @@
+.category_show
+  .slider
+    - if @category.avatar.attached?
+      .slide= image_tag(url_for(@category.avatar), class: "image")
+  .ui.sizer.vertical.segment
+    .ui.medium.header
+      %span
+        = category_tree(@category.id)
+  .ui.internally.grid.main
+    .row
+      .three.wide.column
+        .ui.sizer.vertical.category_sidebar{data_url: search_category_path(params[:id])}
+          .ui.medium.header Price
+          %span
+            = check_box_tag :price_below_50, 1, params[:active]
+            = label_tag :price_below_50, 'Less than Rs 50'
+          %br
+          %br
+          %span
+            = check_box_tag :price_51_100, 1, params[:active]
+            = label_tag :price_51_100, 'Rs 51 to Rs 100'
+          %br
+          %br
+          %span
+            = check_box_tag :price_101_200, 1, params[:active]
+            = label_tag :price_101_200, 'Rs 101 to Rs 200'
+          %br
+          %br
+          %span
+            = check_box_tag :price_201_500, 1, params[:active]
+            = label_tag :price_201_500, 'Rs 201 to Rs 500'
+          %br
+          %br
+          %span
+            = check_box_tag :price_500_above, 1, params[:active]
+            = label_tag :price_500_above, 'Above Rs 500'        
+          %br
+          %br
+      .thirteen.wide.column
+        .ui.cards
+          = render partial: 'product', collection: @products

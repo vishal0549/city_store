@@ -1,0 +1,11 @@
+.container
+  %h2.header
+    Add Category
+  = form_for @category, url: admin_categories_path, html: { class: 'ui form'} do |f|
+    .field.six.wide
+      %label Name
+      = f.text_field :name
+    .field.inline.four.wide
+      %label Parent Category
+      = f.select :parent_id, categories_options, include_blank: "Select Parent Category"
+    = f.submit 'Submit', class: "ui button"

@@ -1,0 +1,46 @@
+.product_offers
+  .slider
+    - @deals.each do |deal|
+      .slide= image_tag(url_for(deal.avatar), class: "image")
+  .ui.sizer.vertical.segment
+    .ui.medium.header Heavy Discounts
+  .ui.cards
+    - @discounted_products.each do |product|  
+      .card
+        .image
+          = link_to image_file(product), product_path(product), data: { turbolinks: false }
+        .content
+          .header
+            = product.name
+          .meta
+            = product.quantity.to_s + product.product_unit.try(:nice_name).to_s
+        .extra.content
+          %span.retail_price
+            = indian_rupee(product.retail_price)
+          %span.sale_price
+            = indian_rupee(product.sale_price)
+          - if product.discount_percent.to_i.nonzero?
+            %br
+            %span.discount_off_message.floated
+              = product.discount_percent.to_s + '% ' + 'OFF'
+  .ui.sizer.vertical.segment.new_arrivals
+    .ui.medium.header New Arrivals
+  .ui.cards
+    - @new_products.each do |product|  
+      .card
+        .image
+          = link_to image_file(product), product_path(product), data: { turbolinks: false }
+        .content
+          .header
+            = product.name
+          .meta
+            = product.quantity.to_s + product.product_unit.try(:nice_name).to_s
+        .extra.content
+          %span.retail_price
+            = indian_rupee(product.retail_price)
+          %span.sale_price
+            = indian_rupee(product.sale_price)
+          - if product.discount_percent.to_i.nonzero?
+            %br
+            %span.discount_off_message.floated
+              = product.discount_percent.to_s + '% ' + 'OFF'
