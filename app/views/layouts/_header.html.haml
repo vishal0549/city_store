@@ -1,6 +1,6 @@
-.ui.secondary.menu.inverted.olive
+.ui.secondary.menu.inverted.yellow
   .item{"data-value" => "male"}
-    = link_to image_tag('city_grocery.png', class: "image", style: "width: 80px;height: 70px;"), root_path, data: { turbolinks: false }
+    = link_to image_tag('city_store_nice.png', class: "image", style: "width: 68px;height: 280px;"), root_path, data: { turbolinks: false }
   .left.menu.full-width
     .item.full-width
       .ui.category.search.full-width
@@ -8,9 +8,9 @@
           %input.prompt{:placeholder => "Search Product...", :type => "text", value: params[:term], class: 'product-search', data_url: prducts_search_path}/
           %i.search.icon
 
-.ui.menu.inverted.brown
+.ui.menu.inverted.black
   .ui.pointing.dropdown.link.item
-    %span.text Shopping By Category
+    %span.text Product Category
     %i.dropdown.icon
     .menu
       - Category.main.each_with_index do |cat, index|
