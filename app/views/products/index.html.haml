@@ -1,7 +1,8 @@
 .product_offers
   .slider
     - @deals.each do |deal|
-      .slide= image_tag(url_for(deal.avatar), class: "image")
+      - if deal.avatar.persisted?
+        .slide= image_tag(url_for(deal.avatar), class: "image")
   .ui.sizer.vertical.segment
     .ui.medium.header Heavy Discounts
   .ui.cards

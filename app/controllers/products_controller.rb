@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
     @new_products = Product.in_stock.where('created_at > ?', 3.days.ago).order('created_at desc') || Product.in_stock.order('created_at desc')
     @discounted_products = Product.in_stock.where('discount_percent > ?', 10).order('discount_percent desc')
     @deals = Deal.where(deleted: false)
+    #@deals=[]
   end
 
   def search

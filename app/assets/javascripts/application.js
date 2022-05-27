@@ -12,9 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
-#= require slick.min
+//#= require slick.min
 $(document).ready(function() {
   $('.ui.dropdown').dropdown();
 });
