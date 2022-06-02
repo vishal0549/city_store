@@ -1,5 +1,6 @@
 .card
   .image
+    - if product.avartar.persisted?
     = link_to image_tag(url_for(product.avatar)), product_path(product), data: { turbolinks: false }
   .content
     .header
